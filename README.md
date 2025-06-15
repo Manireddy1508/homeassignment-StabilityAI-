@@ -85,6 +85,41 @@ Explore the dataset interactively:
 streamlit run scripts/app.py
 ```
 
+### Dataset Filtering System
+The project includes a comprehensive filtering system for researchers:
+
+1. **Interactive Web Interface**
+   - Filter by face detection confidence
+   - Filter by glasses detection confidence
+   - Filter by glasses type (Eyeglasses, Sunglasses, No Glasses)
+   - View dataset statistics (total images, faces, glasses)
+   - Browse filtered results in a grid layout
+   - See confidence scores and annotations
+
+2. **Command-line Tools**
+   ```bash
+   python scripts/display_glasses_images.py \
+       --parquet data/processed/glasses.parquet \
+       --min-confidence 0.7 \
+       --show-thumbnails
+   ```
+   - Filter images by minimum confidence threshold
+   - View thumbnails or full images
+   - Browse through results interactively
+
+3. **Data Organization**
+   - Results saved in Parquet format with structured metadata:
+     - Image paths and face bounding boxes
+     - Confidence scores for face and glasses detection
+     - Glasses type classification
+     - Base64-encoded thumbnails
+     - Face verification results
+
+4. **Dataset Access**
+   - Upload to Hugging Face for easy sharing
+   - Dataset card with documentation
+   - Test scripts for dataset access
+
 ## Project Structure
 
 ```

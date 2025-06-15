@@ -31,17 +31,28 @@ env/
 *.swp
 *.swo
 
-# Project specific
-data/
+# Logs
+*.log
+logs/
+log/
+
+# Model files
 models/*
 !models/yolov8n-face.pt
+!models/clip/
 *.pt
 *.pth
 *.onnx
-*.log
+*.safetensors
+*.bin
+*.weights
+
+# Data files
 *.parquet
+!data/processed/glasses.parquet
 *.csv
 *.json
+!config/*.json
 *.jpg
 *.jpeg
 *.png
@@ -50,24 +61,38 @@ models/*
 *.tiff
 *.webp
 
-# Keep only specific data files
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/glasses_images/.gitkeep
-!data/final/.gitkeep
+# Data directories
+data/raw/
+data/processed/*
+!data/processed/glasses.parquet
+data/glasses_images/
+data/final/
 
-# OS specific
+# Documentation
+docs/*
+!docs/images/
+!docs/images/pipeline_overview.png
+
+# macOS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+**/.DS_Store
 
 # Jupyter Notebook
 .ipynb_checkpoints
 
 # Environment variables
 .env
-.env.local 
+.env.local
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+tmp/
+temp/
+
+# Test files
+test_*/
+!test_downloads/
+!test_downloads/yolov8n-face.pt
+!test_downloads/clip/ 
