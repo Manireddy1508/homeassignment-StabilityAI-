@@ -1,0 +1,55 @@
+# Dataset Configuration
+dataset:
+  wit_dataset_name: "google/wit"
+  batch_size: 32
+  num_workers: 4
+  max_images: 1000000  # Set to None for full dataset
+
+# Image Processing
+image:
+  min_face_size: 100  # Minimum face size in pixels
+  max_image_size: 1024  # Maximum image dimension
+  supported_formats: [".jpg", ".jpeg", ".png"]
+  quality_threshold: 0.7  # Minimum image quality score
+
+# Face Detection
+face_detection:
+  model: "retinaface"  # Options: "retinaface", "yolov8"
+  confidence_threshold: 0.7
+  iou_threshold: 0.5
+  min_face_size: 100
+  max_faces_per_image: 10
+
+# Eyeglasses Classification
+eyeglasses:
+  model: "custom_classifier"  # Options: "custom_classifier", "yolov8"
+  confidence_threshold: 0.8
+  min_face_size: 100
+  exclude_sunglasses: true
+
+# Output Configuration
+output:
+  save_format: "parquet"
+  compression: "snappy"
+  metadata_fields:
+    - "image_id"
+    - "face_boxes"
+    - "eyeglasses_confidence"
+    - "face_size"
+    - "image_quality"
+  hf_repo_name: "stability-ai/eyeglasses-filtered-dataset"
+
+# Pipeline Settings
+pipeline:
+  enable_gpu: true
+  enable_multiprocessing: true
+  cache_dir: "data/cache"
+  log_level: "INFO"
+  save_intermediate: true
+
+# Hugging Face Upload
+huggingface:
+  private_repo: true
+  push_to_hub: true
+  token_env_var: "HF_TOKEN"
+  commit_message: "Update filtered dataset" 
