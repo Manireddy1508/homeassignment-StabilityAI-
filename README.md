@@ -2,6 +2,8 @@
 
 A comprehensive pipeline for detecting faces and eyeglasses in images using YOLOv8 and CLIP models.
 
+![Glasses Detection Pipeline](docs/images/pipeline_overview.png)
+
 ## Features
 
 - Face detection using YOLOv8
