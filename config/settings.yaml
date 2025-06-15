@@ -37,7 +37,7 @@ output:
     - "eyeglasses_confidence"
     - "face_size"
     - "image_quality"
-  hf_repo_name: "stability-ai/eyeglasses-filtered-dataset"
+  hf_repo_name: "Manireddy1508/glasses-detection-dataset"
 
 # Pipeline Settings
 pipeline:

@@ -1,5 +1,25 @@
 # Glasses Detection Pipeline — Brief Report
 
+## 🔐 Repository Access
+
+### GitHub Repository
+- URL: https://github.com/Manireddy1508/homeassignment-StabilityAI-
+- Access: Private repository
+- Granted read access to:
+  - leemengtw
+  - polm-stability
+  - Cwgzstab
+  - fernando-andreotti-sai
+  - vlad-stability
+
+### Hugging Face Dataset
+- Repository: Manireddy1508/glasses-detection-dataset
+- Access: Private repository
+- Contains processed dataset with:
+  - Filtered images of faces wearing eyeglasses
+  - Detection metadata and confidence scores
+  - Face bounding boxes and thumbnails
+
 ## 🧩 Process Summary
 
 1. **Dataset**: We used the WIT dataset (wikimedia/wit) focusing on `train-00000-of-00330.parquet` and `train-00001-of-00330.parquet`. Image URLs were extracted and downloaded with retry logic and validation.

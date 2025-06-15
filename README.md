@@ -79,6 +79,21 @@ Test dataset access:
 python scripts/test_dataset_access.py
 ```
 
+### Dataset Access
+The processed dataset is available on Hugging Face:
+- Repository: `Manireddy1508/glasses-detection-dataset`
+- Access: Private repository
+- To request access:
+  1. Create a Hugging Face account if you don't have one
+  2. Contact the repository maintainers with your Hugging Face username
+  3. You will be granted access to the private dataset
+
+The dataset includes:
+- Filtered images with faces wearing eyeglasses
+- Face detection and glasses classification metadata
+- Confidence scores and bounding boxes
+- Base64-encoded thumbnails for quick preview
+
 ### Web Interface
 Explore the dataset interactively:
 ```bash
