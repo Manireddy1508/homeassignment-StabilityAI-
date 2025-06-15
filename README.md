@@ -125,6 +125,23 @@ streamlit run scripts/app.py
 - Downloaded automatically
 - Stored in safetensors format
 
+## Face Verification
+
+The pipeline includes a two-step face verification process to ensure high-quality face detection:
+
+### Initial Verification
+- Minimum face size: 100x100 pixels
+- Edge margin: 10% from image boundaries
+- Maximum face size: 80% of image dimensions
+- Aspect ratio: Between 0.5 and 2.0
+
+### Advanced Verification (FaceFilter)
+- Additional size validation
+- Aspect ratio verification (0.5 to 2.0)
+- Contrast check (minimum threshold of 20)
+- Grayscale analysis for quality assessment
+- Early rejection of invalid faces
+
 ## Logging
 
 All operations are logged to:
