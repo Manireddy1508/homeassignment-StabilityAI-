@@ -50,19 +50,45 @@
 To handle **billions of images/videos**, we recommend:
 
 1. **Distributed Compute**:
-   - Use Apache Spark or Ray for large-scale parallel processing.
-   - Containerize pipeline using Docker, orchestrated via Kubernetes or Vertex AI Pipelines.
+   - Use Apache Spark or Ray for large-scale parallel processing
+   - Containerize pipeline using Docker, orchestrated via Kubernetes or Vertex AI Pipelines
+   - For videos:
+     - Implement frame sampling strategies (e.g., 1 frame per second)
+     - Use video-specific processing clusters with GPU acceleration
+     - Deploy video decoding workers with hardware acceleration
 
 2. **Efficient Storage**:
-   - Store raw images in S3 or GCS.
-   - Store metadata in compressed columnar formats (Parquet).
-   - Use vector DBs (e.g., Milvus) for CLIP embeddings.
+   - Store raw images in S3 or GCS
+   - Store metadata in compressed columnar formats (Parquet)
+   - Use vector DBs (e.g., Milvus) for CLIP embeddings
+   - For videos:
+     - Store video chunks in distributed object storage
+     - Use video streaming formats (e.g., HLS, DASH)
+     - Implement tiered storage for hot/cold video data
 
 3. **Optimized Inference**:
-   - Convert YOLO and CLIP to ONNX for FP16 inference.
-   - Use GPU batch inference.
-   - Cache repeated scene embeddings for multi-face frames.
+   - Convert YOLO and CLIP to ONNX for FP16 inference
+   - Use GPU batch inference
+   - Cache repeated scene embeddings for multi-face frames
+   - For videos:
+     - Implement temporal consistency checks
+     - Use video-specific face tracking
+     - Batch process frames with temporal context
+
+4. **Video-Specific Optimizations**:
+   - Frame Selection:
+     - Skip similar consecutive frames
+     - Focus on frames with significant motion
+     - Use scene change detection
+   - Processing Pipeline:
+     - Parallel video decoding and processing
+     - GPU-accelerated video transcoding
+     - Distributed video metadata extraction
+   - Storage and Retrieval:
+     - Video chunking for efficient streaming
+     - Frame-level indexing for quick access
+     - Temporal metadata for scene navigation
 
 ---
 
-This setup allows high-precision filtering of human faces with transparent eyeglasses and can scale from local batches to billions of samples with minimal architectural changes. 
+This setup allows high-precision filtering of human faces with transparent eyeglasses and can scale from local batches to billions of samples with minimal architectural changes. The system is designed to handle both static images and video content efficiently, with optimizations specific to each media type. 
