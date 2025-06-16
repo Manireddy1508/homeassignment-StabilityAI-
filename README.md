@@ -44,7 +44,7 @@ pip install -r requirements.txt
 python scripts/download_models.py
 ```
 
-## Usage
+## 🚀 Implementation Steps
 
 ### Model Download
 Download required models (YOLOv8n-face and CLIP):
@@ -56,9 +56,29 @@ Or specify a custom directory:
 python scripts/download_models.py --models-dir test_downloads
 ```
 
-### Face and Glasses Detection
-Process images to detect faces and eyeglasses:
+### 1. Download WIT Dataset
 ```bash
+# Download WIT dataset metadata
+python scripts/download_wit.py
+```
+This will:
+- Download the WIT dataset metadata
+- Create necessary directories
+- Set up the data structure
+
+### 2. Download Images
+```bash
+# Download images from WIT dataset
+python scripts/download_images.py
+```
+This will:
+- Download images from WIT dataset
+- Filter images based on metadata
+- Save images to the data directory
+
+### 3. Run Face Detection Pipeline
+```bash
+# Run the face detection pipeline
 python scripts/detect_faces_and_glasses.py \
     --input-dir data/raw \
     --output-dir data/processed \
@@ -67,17 +87,31 @@ python scripts/detect_faces_and_glasses.py \
     --use-clip \
     --save-glasses
 ```
+This will:
+- Detect faces in images using YOLOv8
+- Classify glasses using CLIP
+- Save results to Parquet files
 
-### Dataset Management
-Upload processed dataset to Hugging Face:
+### 4. Upload to Hugging Face
 ```bash
+# Upload processed dataset to Hugging Face
 python scripts/upload_to_huggingface.py
 ```
+This will:
+- Process the results
+- Create the dataset
+- Upload to Hugging Face
 
-Test dataset access:
+### 5. Run Web Interface
 ```bash
-python scripts/test_dataset_access.py
+# Start the Streamlit web interface
+streamlit run scripts/app.py
 ```
+This will:
+- Start the web server
+- Allow you to browse the dataset
+- View detection results
+
 
 ### Dataset Access
 The processed dataset is available on Hugging Face:
@@ -278,3 +312,77 @@ Contributions are welcome! If you have suggestions for improvements, new feature
 ## License
 
 This project is open-source
+
+## 🚀 Implementation
+
+### 1. Download Required Models
+```bash
+# Download YOLOv8 face detection model
+python scripts/download_models.py
+```
+
+### 2. Download WIT Dataset
+```bash
+# Download WIT dataset metadata
+python scripts/download_wit.py
+```
+This will:
+- Download the WIT dataset metadata
+- Create necessary directories
+- Set up the data structure
+
+### 3. Download Images
+```bash
+# Download images from WIT dataset
+python scripts/download_images.py
+```
+This will:
+- Download images from WIT dataset
+- Filter images based on metadata
+- Save images to the data directory
+
+### 4. Run Face Detection Pipeline
+```bash
+# Run the face detection pipeline
+python scripts/run_pipeline.py
+```
+This will:
+- Detect faces in images using YOLOv8
+- Classify glasses using CLIP
+- Save results to Parquet files
+
+### 5. Upload to Hugging Face
+```bash
+# Upload processed dataset to Hugging Face
+python scripts/upload_to_hf.py
+```
+This will:
+- Process the results
+- Create the dataset
+- Upload to Hugging Face
+
+### 6. Run Web Interface
+```bash
+# Start the Streamlit web interface
+streamlit run app.py
+```
+This will:
+- Start the web server
+- Allow you to browse the dataset
+- View detection results
+
+## 📊 Dataset Access
+
+The processed dataset is available on Hugging Face:
+- Repository: `Manireddy1508/glasses-detection-dataset`
+- Access: Private repository
+- To request access:
+  1. Create a Hugging Face account if you don't have one
+  2. Contact the repository maintainers with your Hugging Face username
+  3. You will be granted access to the private dataset
+
+The dataset includes:
+- Filtered images with faces wearing eyeglasses
+- Face detection and glasses classification metadata
+- Confidence scores and bounding boxes
+- Base64-encoded thumbnails for quick preview
